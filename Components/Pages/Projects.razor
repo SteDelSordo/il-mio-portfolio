@@ -1,0 +1,26 @@
+@using MudBlazor
+
+@page "/projects"
+
+<MudContainer MaxWidth="MaxWidth.False" Class="mt-8">
+    <MudText Typo="Typo.h3" GutterBottom="true">Progetti</MudText>
+    <MudText Class="mb-8">Una selezione dei miei lavori migliori. Clicca su una card per saperne di più.</MudText>
+
+    <MudGrid Spacing="4">
+        <MudItem xs="12" sm="6" md="4">
+            <ProjectCard Title="Progetto Alpha"
+                Description="Un'applicazione web full-stack per la gestione di... Costruita con .NET 8 e Blazor."
+                ImageUrl="https://placehold.co/600x400/1E1E1E/39FF14?text=Alpha" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <ProjectCard Title="Progetto Beta"
+                Description="Un client API che si interfaccia con... per visualizzare dati in tempo reale."
+                ImageUrl="https://placehold.co/600x400/1E1E1E/39FF14?text=Beta" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <ProjectCard Title="Progetto Gamma"
+                Description="Un tool innovativo che utilizza... per risolvere il problema di..."
+                ImageUrl="https://placehold.co/600x400/1E1E1E/39FF14?text=Gamma" />
+        </MudItem>
+    </MudGrid>
+</MudContainer>

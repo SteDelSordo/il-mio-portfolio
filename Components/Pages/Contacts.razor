@@ -1,0 +1,47 @@
+@page "/contact"
+
+<style>
+    .contact-button {
+        transition: all 0.2s ease-in-out !important;
+        border-width: 2px !important;
+        font-weight: 600 !important;
+    }
+
+    /* L'hover ora riempie il bottone */
+    .contact-button:hover {
+        background-color: var(--mud-palette-primary) !important;
+        color: var(--mud-palette-background) !important;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+</style>
+
+<MudContainer MaxWidth="MaxWidth.False" Class="mt-8">
+    <MudText Typo="Typo.h3" GutterBottom="true">Mettiamoci in Contatto</MudText>
+    <MudText Class="mb-8">
+        Sono sempre aperto a nuove sfide e collaborazioni. Se hai un progetto in mente, un'idea da discutere o vuoi
+        semplicemente salutarmi, non esitare a contattarmi tramite uno dei canali qui sotto.
+    </MudText>
+
+    <MudGrid Justify="Justify.Center" Spacing="4">
+        <MudItem>
+            <MudButton Href="mailto:stefano.delsordo@gmail.com" Target="_blank" Variant="Variant.Outlined"
+                Color="Color.Primary" StartIcon="fas fa-envelope" Size="Size.Large" Class="contact-button">
+                Inviami una Email
+            </MudButton>
+        </MudItem>
+        <MudItem>
+            <MudButton Href="https://www.linkedin.com/in/stefano-del-sordo-ab5a98254/" Target="_blank"
+                Variant="Variant.Outlined" Color="Color.Primary" StartIcon="fa-brands fa-linkedin" Size="Size.Large"
+                Class="contact-button">
+                LinkedIn
+            </MudButton>
+        </MudItem>
+        <MudItem>
+            <MudButton Href="https://github.com/SteDelSordo" Target="_blank" Variant="Variant.Outlined"
+                Color="Color.Primary" StartIcon="fa-brands fa-github" Size="Size.Large" Class="contact-button">
+                GitHub
+            </MudButton>
+        </MudItem>
+    </MudGrid>
+</MudContainer>

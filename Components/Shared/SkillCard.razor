@@ -1,0 +1,27 @@
+@using MudBlazor
+
+<MudPaper Outlined="true" Class="d-flex flex-column align-center justify-center pa-4 skill-card">
+    <MudIcon Icon="@Icon" Size="Size.Large" />
+    <MudText Typo="Typo.body1" Class="mt-2">@SkillName</MudText>
+</MudPaper>
+
+<style>
+    .skill-card {
+        transition: all 0.2s ease-in-out;
+        border-color: var(--mud-palette-surface);
+    }
+
+    .skill-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--mud-palette-primary);
+        box-shadow: 0 0 10px var(--mud-palette-primary);
+    }
+</style>
+
+@code {
+    [Parameter]
+    public string SkillName { get; set; } = "Skill";
+
+    [Parameter]
+    public string Icon { get; set; } = Icons.Material.Filled.Code;
+}

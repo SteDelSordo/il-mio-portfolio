@@ -1,0 +1,58 @@
+@page "/about"
+
+<MudContainer MaxWidth="MaxWidth.False" Class="mt-8">
+    <MudText Typo="Typo.h3" GutterBottom="true">About Me</MudText>
+
+    <MudGrid Spacing="4" Justify="Justify.Center">
+        <MudItem xs="12" md="4" Class="d-flex flex-column align-center">
+            <MudAvatar Image="https://placehold.co/256x256/1E1E1E/39FF14?text=SDS"
+                Style="height:256px; width:256px; font-size: 5rem;" />
+            <MudText Typo="Typo.h5" Class="mt-4">Stefano Del Sordo</MudText>
+            <MudText Typo="Typo.subtitle1" Color="Color.Primary">Full-Stack Developer & AI Specialist</MudText>
+        </MudItem>
+        <MudItem xs="12" md="8">
+            <MudText Class="mb-4">
+                Ciao! Sono Stefano, un ingegnere del software con una profonda passione per la creazione di soluzioni
+                digitali eleganti, performanti e intuitive. La mia avventura nel mondo del codice è iniziata con
+                **PHP**, e da allora non ho mai smesso di esplorare, imparare e costruire.
+            </MudText>
+            <MudText Class="mb-4">
+                Credo fermamente che un grande software non sia solo una questione di codice pulito, ma anche di design
+                intelligente e di un'esperienza utente impeccabile. Il mio obiettivo è tradurre idee complesse in
+                applicazioni semplici e potenti, che risolvano problemi reali, con un focus crescente sulle potenzialità
+                dell'Intelligenza Artificiale.
+            </MudText>
+
+            <MudText Typo="Typo.h5" GutterBottom="true" Class="mt-8">Il Mio Arsenale Tecnologico</MudText>
+            <MudGrid Spacing="2">
+                <MudItem xs="6" sm="4" md="3">
+                    <SkillCard SkillName="C#" Icon="fas fa-code" />
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3">
+                    <SkillCard SkillName=".NET" Icon="fas fa-microchip" />
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3">
+                    <SkillCard SkillName="Blazor" Icon="fas fa-layer-group" />
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3">
+                    <SkillCard SkillName="PHP" Icon="fa-brands fa-php" />
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3">
+                    <SkillCard SkillName="Python" Icon="fa-brands fa-python" />
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3">
+                    <SkillCard SkillName="JavaScript" Icon="fa-brands fa-js" />
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3">
+                    <SkillCard SkillName="Azure" Icon="fa-brands fa-microsoft" />
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3">
+                    <SkillCard SkillName="SQL" Icon="fas fa-database" />
+                </MudItem>
+                <MudItem xs="6" sm="4" md="3">
+                    <SkillCard SkillName="Git" Icon="fa-brands fa-git-alt" />
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+    </MudGrid>
+</MudContainer>

@@ -1,0 +1,21 @@
+<MudCard Class="project-card">
+    <MudCardMedia Image="@ImageUrl" Height="200" />
+    <MudCardContent>
+        <MudText Typo="Typo.h5" Color="Color.Primary">@Title</MudText>
+        <MudText Typo="Typo.body2">@Description</MudText>
+    </MudCardContent>
+    <MudCardActions>
+        <MudButton Variant="Variant.Text" Color="Color.Primary">Scopri di più</MudButton>
+    </MudCardActions>
+</MudCard>
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = "Titolo Progetto";
+
+    [Parameter]
+    public string Description { get; set; } = "Descrizione del progetto...";
+
+    [Parameter]
+    public string ImageUrl { get; set; } = "https://placehold.co/600x400";
+}
