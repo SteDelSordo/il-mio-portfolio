@@ -1,12 +1,70 @@
 ﻿@page "/"
 
-<div
-    style="text-align: center; font-family: sans-serif; color: #333; height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <h1 style="font-size: 3rem; margin-bottom: 0.5rem;">Stefano Del Sordo</h1>
-    <p style="font-size: 1.5rem; color: #555;">Online Portfolio</p>
-    <div style="margin-top: 40px; padding: 20px; border: 2px dashed #007bff; border-radius: 10px;">
-        <h2 style="font-size: 2rem; color: #007bff; margin: 0;">WORK IN PROGRESS</h2>
-        <p style="font-size: 1.2rem; margin-top: 10px;">Il nuovo portfolio è in fase di costruzione. <br>Torna presto
-            per scoprire i miei progetti!</p>
-    </div>
-</div>
+<style>
+    .neon-text {
+        color: var(--mud-palette-primary);
+        text-shadow:
+            0 0 2px var(--mud-palette-primary),
+            0 0 8px var(--mud-palette-primary),
+            0 0 12px var(--mud-palette-primary);
+    }
+
+    .neon-box {
+        border: 2px solid var(--mud-palette-primary);
+        border-radius: 8px;
+        box-shadow: 0 0 8px var(--mud-palette-primary);
+        background-color: transparent !important;
+    }
+
+    .typing-cursor {
+        display: inline-block;
+        width: 12px;
+        height: 3rem;
+        background-color: var(--mud-palette-primary);
+        animation: blink 1s step-end infinite;
+        box-shadow: 0 0 8px var(--mud-palette-primary);
+    }
+
+    @@keyframes blink {
+
+        from,
+        to {
+            background-color: transparent
+        }
+
+        50% {
+            background-color: var(--mud-palette-primary);
+        }
+    }
+</style>
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex flex-column justify-center align-center" Style="height: 80vh;">
+
+    <MudText Typo="Typo.h2" Class="neon-text" Style="font-weight: 500;">
+        @_displayedText
+        <span class="typing-cursor"></span>
+    </MudText>
+    <MudText Typo="Typo.h5" Class="mt-2 mb-8">Online Portfolio</MudText>
+
+    <MudPaper Elevation="0" Class="pa-4 neon-box">
+        <MudText Typo="Typo.h4" Align="Align.Center" Class="neon-text">WORK IN PROGRESS</MudText>
+        <MudText Typo="Typo.body1" Align="Align.Center" Class="mt-2">Il nuovo portfolio è in fase di costruzione. <br>
+            Torna presto per scoprire i miei progetti!</MudText>
+    </MudPaper>
+
+</MudContainer>
+
+@code {
+    private string _fullText = "Stefano Del Sordo";
+    private string _displayedText = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        foreach (char c in _fullText)
+        {
+            _displayedText += c;
+            StateHasChanged();
+            await Task.Delay(150); // Velocità di battitura (in millisecondi)
+        }
+    }
+}
