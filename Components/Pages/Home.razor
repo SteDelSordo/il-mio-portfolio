@@ -1,8 +1,16 @@
 ﻿@page "/"
+@implements IDisposable
 
 <style>
     .neon-text {
         color: var(--mud-palette-primary);
+        text-shadow:
+            0 0 1px var(--mud-palette-primary),
+            0 0 4px var(--mud-palette-primary),
+            0 0 8px var(--mud-palette-primary);
+    }
+
+    .mud-theme-dark .neon-text {
         text-shadow:
             0 0 2px var(--mud-palette-primary),
             0 0 8px var(--mud-palette-primary),
@@ -41,13 +49,12 @@
 <MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex flex-column justify-center align-center" Style="height: 80vh;">
 
     <MudText Typo="Typo.h2" Class="neon-text" Style="font-weight: 500;">
-        @_displayedText
-        <span class="typing-cursor"></span>
+        @_displayedText<span class="@(_cursorVisible ? "typing-cursor" : "")"></span>
     </MudText>
     <MudText Typo="Typo.h5" Class="mt-2 mb-8">Online Portfolio</MudText>
 
     <MudPaper Elevation="0" Class="pa-4 neon-box">
-        <MudText Typo="Typo.h4" Align="Align.Center" Class="neon-text">WORK IN PROGRESS</MudText>
+        <MudText Typo="Typo.h4" Align="Align.Center" Class="neon-text">LAVORI IN CORSO</MudText>
         <MudText Typo="Typo.body1" Align="Align.Center" Class="mt-2">Il nuovo portfolio è in fase di costruzione. <br>
             Torna presto per scoprire i miei progetti!</MudText>
     </MudPaper>
@@ -57,14 +64,43 @@
 @code {
     private string _fullText = "Stefano Del Sordo";
     private string _displayedText = "";
+    private bool _cursorVisible = true;
+    private System.Threading.Timer? _cursorTimer;
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
+    {
+        _cursorTimer = new System.Threading.Timer(ToggleCursor, null, 0, 500);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await TypeFullText();
+            _cursorTimer?.Change(Timeout.Infinite, 0);
+            _cursorVisible = false;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private async Task TypeFullText()
     {
         foreach (char c in _fullText)
         {
             _displayedText += c;
-            StateHasChanged();
-            await Task.Delay(150); // Velocità di battitura (in millisecondi)
+            await InvokeAsync(StateHasChanged);
+            await Task.Delay(150);
         }
+    }
+
+    private void ToggleCursor(object? state)
+    {
+        _cursorVisible = !_cursorVisible;
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        _cursorTimer?.Dispose();
     }
 }

@@ -1,8 +1,28 @@
-@using MudBlazor
+@page "/progetti"
 
-@page "/projects"
+<style>
+    .pre-animate {
+        opacity: 0;
+    }
 
-<MudContainer MaxWidth="MaxWidth.False" Class="mt-8">
+    .animate-fade-in-up {
+        animation: fade-in-up-anim 0.7s ease-out forwards;
+    }
+
+    @@keyframes fade-in-up-anim {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<MudContainer MaxWidth="MaxWidth.False" Class="@_containerClass">
     <MudText Typo="Typo.h3" GutterBottom="true">Progetti</MudText>
     <MudText Class="mb-8">Una selezione dei miei lavori migliori. Clicca su una card per saperne di più.</MudText>
 
@@ -10,17 +30,31 @@
         <MudItem xs="12" sm="6" md="4">
             <ProjectCard Title="Progetto Alpha"
                 Description="Un'applicazione web full-stack per la gestione di... Costruita con .NET 8 e Blazor."
-                ImageUrl="https://placehold.co/600x400/1E1E1E/39FF14?text=Alpha" />
+                ImageUrl="https://placehold.co/600x400/1E1E1E/26A69A?text=Alpha" />
         </MudItem>
         <MudItem xs="12" sm="6" md="4">
             <ProjectCard Title="Progetto Beta"
                 Description="Un client API che si interfaccia con... per visualizzare dati in tempo reale."
-                ImageUrl="https://placehold.co/600x400/1E1E1E/39FF14?text=Beta" />
+                ImageUrl="https://placehold.co/600x400/1E1E1E/26A69A?text=Beta" />
         </MudItem>
         <MudItem xs="12" sm="6" md="4">
             <ProjectCard Title="Progetto Gamma"
                 Description="Un tool innovativo che utilizza... per risolvere il problema di..."
-                ImageUrl="https://placehold.co/600x400/1E1E1E/39FF14?text=Gamma" />
+                ImageUrl="https://placehold.co/600x400/1E1E1E/26A69A?text=Gamma" />
         </MudItem>
     </MudGrid>
 </MudContainer>
+
+@code {
+    private string _containerClass = "mt-8 pre-animate";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(50);
+            _containerClass = "mt-8 animate-fade-in-up";
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+}

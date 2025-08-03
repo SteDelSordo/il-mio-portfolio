@@ -8,11 +8,8 @@
 
 <MudLayout>
     <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
-            OnClick="DrawerToggle" />
-        <MudText Typo="Typo.h5" Class="ml-4"
-            Style="@($"color: {_myTheme.PaletteDark.Primary}; text-shadow: 0 0 2px {_myTheme.PaletteDark.Primary}, 0 0 6px {_myTheme.PaletteDark.Primary};")">
-            Stefano Del Sordo</MudText>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle" />
+        <MudText Typo="Typo.h5" Class="ml-4" Style="@AppBarTitleStyle">Stefano Del Sordo</MudText>
         <MudSpacer />
         <MudIconButton Icon="@Icons.Material.Filled.Brightness4" Color="Color.Inherit" OnClick="@ToggleDarkMode" />
     </MudAppBar>
@@ -31,6 +28,10 @@
     private bool _drawerOpen = false;
     private bool _isDarkMode = true;
 
+    private string AppBarTitleStyle => _isDarkMode 
+        ? $"color: {_myTheme.PaletteDark.Primary}; text-shadow: 0 0 2px {_myTheme.PaletteDark.Primary}, 0 0 6px {_myTheme.PaletteDark.Primary};" 
+        : $"color: {_myTheme.PaletteLight.Primary};";
+
     void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
@@ -45,25 +46,26 @@
     {
         PaletteDark = new PaletteDark()
         {
-            Primary = "#39FF14", // Verde acido, unico accento di colore
-            Background = "#0A0A0A", // Un nero ancora più profondo
-            AppbarBackground = "#141414", // Barre leggermente più chiare
+            Primary = "#26A69A", // AGGIORNATO: Stesso colore primario del tema light
+            Background = "#0A0A0A",
+            AppbarBackground = "#141414",
+            AppbarText = "#EAEAEA", 
             DrawerBackground = "#141414",
-            Surface = "#1E1E1E", // Superfici come le card
+            Surface = "#1E1E1E",
             TextPrimary = "#EAEAEA",
             TextSecondary = "#A0A0A0",
             ActionDefault = "#BDBDBD"
         },
-        // Definizione del tema per la modalità "giorno"
         PaletteLight = new PaletteLight()
         {
-            Primary = Colors.Green.Darken3,
-            Background = "#FAFAFA",
-            AppbarBackground = Colors.Green.Darken3,
+            Primary = "#26A69A", 
+            Background = "#F7F9FC",
+            AppbarBackground = "#FFFFFF",
+            AppbarText = "#616161", // Colore per testo e icone su Appbar chiara
             DrawerBackground = "#FFFFFF",
             Surface = "#FFFFFF",
-            TextPrimary = "#424242",
-            TextSecondary = "#757575"
+            TextPrimary = "#212121",
+            TextSecondary = "#616161"
         },
         Typography = new Typography()
         {

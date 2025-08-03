@@ -1,47 +1,95 @@
-@page "/contact"
+@page "/contatti"
 
 <style>
-    .contact-button {
-        transition: all 0.2s ease-in-out !important;
-        border-width: 2px !important;
+    .contact-button-3d {
+        position: relative;
+        background-color: var(--mud-palette-surface) !important;
+        color: var(--mud-palette-primary) !important;
+        border: 1px solid var(--mud-palette-primary) !important;
+        border-radius: 12px !important;
         font-weight: 600 !important;
+        transition: all 0.15s ease-out !important;
+        transform-style: preserve-3d;
+        /* Simula lo spessore del bottone */
+        box-shadow: 0 4px 0 0 color-mix(in srgb, var(--mud-palette-primary) 70%, black);
+        transform: translateY(-4px);
     }
 
-    /* L'hover ora riempie il bottone */
-    .contact-button:hover {
-        background-color: var(--mud-palette-primary) !important;
-        color: var(--mud-palette-background) !important;
-        transform: translateY(-3px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    .contact-button-3d:hover {
+        /* Solleva e ruota leggermente il bottone */
+        transform: translateY(-6px) rotateX(10deg) rotateY(-5deg);
+        box-shadow: 0 8px 0 0 color-mix(in srgb, var(--mud-palette-primary) 70%, black), 0 12px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-button-3d:active {
+        /* Simula la pressione completa */
+        transform: translateY(0);
+        box-shadow: 0 0px 0 0 color-mix(in srgb, var(--mud-palette-primary) 70%, black);
+    }
+
+    .pre-animate {
+        opacity: 0;
+    }
+
+    .animate-fade-in-up {
+        animation: fade-in-up-anim 0.7s ease-out forwards;
+    }
+
+    @@keyframes fade-in-up-anim {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 </style>
 
-<MudContainer MaxWidth="MaxWidth.False" Class="mt-8">
+<MudContainer MaxWidth="MaxWidth.Medium" Class="@_containerClass">
     <MudText Typo="Typo.h3" GutterBottom="true">Mettiamoci in Contatto</MudText>
     <MudText Class="mb-8">
         Sono sempre aperto a nuove sfide e collaborazioni. Se hai un progetto in mente, un'idea da discutere o vuoi
-        semplicemente salutarmi, non esitare a contattarmi tramite uno dei canali qui sotto.
+        semplicemente salutarmi, scegli il tuo canale preferito qui sotto.
     </MudText>
 
-    <MudGrid Justify="Justify.Center" Spacing="4">
-        <MudItem>
-            <MudButton Href="mailto:stefano.delsordo@gmail.com" Target="_blank" Variant="Variant.Outlined"
-                Color="Color.Primary" StartIcon="fas fa-envelope" Size="Size.Large" Class="contact-button">
-                Inviami una Email
-            </MudButton>
-        </MudItem>
-        <MudItem>
-            <MudButton Href="https://www.linkedin.com/in/stefano-del-sordo-ab5a98254/" Target="_blank"
-                Variant="Variant.Outlined" Color="Color.Primary" StartIcon="fa-brands fa-linkedin" Size="Size.Large"
-                Class="contact-button">
-                LinkedIn
-            </MudButton>
-        </MudItem>
-        <MudItem>
-            <MudButton Href="https://github.com/SteDelSordo" Target="_blank" Variant="Variant.Outlined"
-                Color="Color.Primary" StartIcon="fa-brands fa-github" Size="Size.Large" Class="contact-button">
-                GitHub
-            </MudButton>
-        </MudItem>
-    </MudGrid>
+    <MudStack Row="true" Justify="Justify.Center" Spacing="4" Wrap="Wrap.Wrap" Class="mt-8">
+        <MudButton Href="mailto:stefano.delsordo@gmail.com" Target="_blank" Variant="Variant.Filled"
+            Color="Color.Inherit" StartIcon="fas fa-envelope" Size="Size.Large" Class="contact-button-3d">
+            Inviami una Email
+        </MudButton>
+        <MudButton Href="https://www.linkedin.com/in/stefano-del-sordo-ab5a98254/" Target="_blank"
+            Variant="Variant.Filled" Color="Color.Inherit" StartIcon="fa-brands fa-linkedin" Size="Size.Large"
+            Class="contact-button-3d">
+            LinkedIn
+        </MudButton>
+        <MudButton Href="https://github.com/SteDelSordo" Target="_blank" Variant="Variant.Filled" Color="Color.Inherit"
+            StartIcon="fa-brands fa-github" Size="Size.Large" Class="contact-button-3d">
+            GitHub
+        </MudButton>
+        <MudButton Href="https://wa.me/393336994097" Target="_blank" Variant="Variant.Filled" Color="Color.Inherit"
+            StartIcon="fa-brands fa-whatsapp" Size="Size.Large" Class="contact-button-3d">
+            WhatsApp
+        </MudButton>
+        <MudButton Href="https://t.me/SteYoshizu" Target="_blank" Variant="Variant.Filled" Color="Color.Inherit"
+            StartIcon="fa-brands fa-telegram" Size="Size.Large" Class="contact-button-3d">
+            Telegram
+        </MudButton>
+    </MudStack>
 </MudContainer>
+
+@code {
+    private string _containerClass = "mt-8 pre-animate";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(50);
+            _containerClass = "mt-8 animate-fade-in-up";
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+}
