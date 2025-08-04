@@ -2,26 +2,65 @@
 @implements IDisposable
 
 <style>
-    .neon-text {
-        color: var(--mud-palette-primary);
-        text-shadow:
-            0 0 1px var(--mud-palette-primary),
-            0 0 4px var(--mud-palette-primary),
-            0 0 8px var(--mud-palette-primary);
+    .full-bleed-container {
+        margin: 0 -16px;
+        /* Annulla il padding px-4 del contenitore principale */
     }
 
-    .mud-theme-dark .neon-text {
+    .hero-section {
+        position: relative;
+        background-image: url('https://i.ibb.co/8DFDG1NK/Lucid-Origin-cinematic-wide_shot-abstract-digital-art-a-beauti-0.jpg');
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        min-height: 85vh;
+        /* Rimuoviamo il border-radius su mobile per un effetto edge-to-edge */
+        border-radius: 0;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Riapplichiamo il border-radius su schermi più grandi */
+    @@media (min-width: 600px) {
+        .hero-section {
+            border-radius: 16px;
+        }
+
+        .full-bleed-container {
+            margin: 0;
+        }
+    }
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(10, 10, 10, 0.6);
+        /* Overlay scuro per contrasto */
+        border-radius: inherit;
+        /* Eredita il border-radius dal genitore */
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .neon-text {
+        background: linear-gradient(-45deg, var(--mud-palette-primary), #00BFFF, #4DB6AC, var(--mud-palette-primary));
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-animation 10s ease infinite;
         text-shadow:
             0 0 2px var(--mud-palette-primary),
             0 0 8px var(--mud-palette-primary),
             0 0 12px var(--mud-palette-primary);
-    }
-
-    .neon-box {
-        border: 2px solid var(--mud-palette-primary);
-        border-radius: 8px;
-        box-shadow: 0 0 8px var(--mud-palette-primary);
-        background-color: transparent !important;
     }
 
     .typing-cursor {
@@ -44,22 +83,45 @@
             background-color: var(--mud-palette-primary);
         }
     }
+
+    .subtitle-animated-gradient {
+        background: linear-gradient(-45deg, var(--mud-palette-primary), #00BFFF, #4DB6AC, var(--mud-palette-primary));
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-animation 10s ease infinite;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        /* Ombra per staccare il testo */
+    }
+
+    @@keyframes gradient-animation {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
 </style>
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="d-flex flex-column justify-center align-center" Style="height: 80vh;">
-
-    <MudText Typo="Typo.h2" Class="neon-text" Style="font-weight: 500;">
-        @_displayedText<span class="@(_cursorVisible ? "typing-cursor" : "")"></span>
-    </MudText>
-    <MudText Typo="Typo.h5" Class="mt-2 mb-8">Online Portfolio</MudText>
-
-    <MudPaper Elevation="0" Class="pa-4 neon-box">
-        <MudText Typo="Typo.h4" Align="Align.Center" Class="neon-text">LAVORI IN CORSO</MudText>
-        <MudText Typo="Typo.body1" Align="Align.Center" Class="mt-2">Il nuovo portfolio è in fase di costruzione. <br>
-            Torna presto per scoprire i miei progetti!</MudText>
-    </MudPaper>
-
-</MudContainer>
+<div class="full-bleed-container">
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content text-center pa-4">
+            <MudText Typo="Typo.h2" Class="neon-text" Style="font-weight: 500;">
+                @_displayedText<span class="@(_cursorVisible ? "typing-cursor" : "")"></span>
+            </MudText>
+            <MudText Typo="Typo.h5" Class="mt-2 mb-4 subtitle-animated-gradient">
+                Codice, Creatività e Intelligenza Artificiale
+            </MudText>
+        </div>
+    </div>
+</div>
 
 @code {
     private string _fullText = "Stefano Del Sordo";

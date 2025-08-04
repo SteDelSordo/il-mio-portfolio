@@ -1,15 +1,56 @@
 ﻿@inherits LayoutComponentBase
-@using MudBlazor.Services;
 @rendermode InteractiveServer
+@using MudBlazor.Services
+@inject NavigationManager NavigationManager
+
+<style>
+    /* Su schermi piccoli (breakpoint sm e inferiori), centra il testo del titolo nell'AppBar */
+    @@media (max-width: 959.95px) {
+        .appbar-title-responsive {
+            text-align: center;
+            flex-grow: 1;
+            /* Permette al titolo di occupare lo spazio disponibile per centrarsi correttamente */
+        }
+    }
+
+    .navbar-title-animated {
+        background: linear-gradient(-45deg, var(--mud-palette-primary), #00BFFF, #4DB6AC, var(--mud-palette-primary));
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-animation-navbar 10s ease infinite;
+        font-weight: 500;
+    }
+
+    @@keyframes gradient-animation-navbar {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .mud-theme-dark .navbar-title-animated {
+        text-shadow: 0 0 2px var(--mud-palette-primary), 0 0 6px var(--mud-palette-primary);
+    }
+</style>
 
 <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="@_myTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
-<MudLayout>
+<MudLayout Style="flex: 1; display: flex; flex-direction: column;">
     <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle" />
-        <MudText Typo="Typo.h5" Class="ml-4" Style="@AppBarTitleStyle">Stefano Del Sordo</MudText>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
+            OnClick="DrawerToggle" />
+        <MudText Typo="Typo.h5" Class="ml-4 cursor-pointer appbar-title-responsive navbar-title-animated"
+            @onclick='() => NavigationManager.NavigateTo("")'>Stefano Del Sordo</MudText>
         <MudSpacer />
         <MudIconButton Icon="@Icons.Material.Filled.Brightness4" Color="Color.Inherit" OnClick="@ToggleDarkMode" />
     </MudAppBar>
@@ -19,18 +60,23 @@
         </MudDrawerHeader>
         <NavMenu />
     </MudDrawer>
-    <MudMainContent Class="pt-16 px-4 pb-16">
+    <MudMainContent Class="pt-16 px-4 pb-16" Style="flex: 1 0 auto;">
         @Body
     </MudMainContent>
+
+    <MudAppBar Bottom="true" Fixed="false" Elevation="1">
+        <MudText Typo="Typo.body2">© @DateTime.Now.Year.ToString() Stefano Del Sordo</MudText>
+        <MudSpacer />
+        <MudIconButton Href="https://www.linkedin.com/in/stefano-del-sordo-ab5a98254/" Target="_blank"
+            Icon="fa-brands fa-linkedin" Color="Color.Inherit" />
+        <MudIconButton Href="https://github.com/SteDelSordo" Target="_blank" Icon="fa-brands fa-github"
+            Color="Color.Inherit" />
+    </MudAppBar>
 </MudLayout>
 
 @code {
     private bool _drawerOpen = false;
     private bool _isDarkMode = true;
-
-    private string AppBarTitleStyle => _isDarkMode 
-        ? $"color: {_myTheme.PaletteDark.Primary}; text-shadow: 0 0 2px {_myTheme.PaletteDark.Primary}, 0 0 6px {_myTheme.PaletteDark.Primary};" 
-        : $"color: {_myTheme.PaletteLight.Primary};";
 
     void DrawerToggle()
     {
@@ -46,10 +92,10 @@
     {
         PaletteDark = new PaletteDark()
         {
-            Primary = "#26A69A", // AGGIORNATO: Stesso colore primario del tema light
+            Primary = "#26A69A",
             Background = "#0A0A0A",
             AppbarBackground = "#141414",
-            AppbarText = "#EAEAEA", 
+            AppbarText = "#EAEAEA",
             DrawerBackground = "#141414",
             Surface = "#1E1E1E",
             TextPrimary = "#EAEAEA",
@@ -58,10 +104,10 @@
         },
         PaletteLight = new PaletteLight()
         {
-            Primary = "#26A69A", 
+            Primary = "#26A69A",
             Background = "#F7F9FC",
             AppbarBackground = "#FFFFFF",
-            AppbarText = "#616161", // Colore per testo e icone su Appbar chiara
+            AppbarText = "#616161",
             DrawerBackground = "#FFFFFF",
             Surface = "#FFFFFF",
             TextPrimary = "#212121",
