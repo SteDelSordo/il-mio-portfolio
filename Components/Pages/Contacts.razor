@@ -1,30 +1,74 @@
 @page "/contatti"
 
 <style>
-    .contact-button-3d {
+    .wavy-button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .wavy-button-3d {
         position: relative;
-        background-color: var(--mud-palette-surface) !important;
-        color: var(--mud-palette-primary) !important;
-        border: 1px solid var(--mud-palette-primary) !important;
-        border-radius: 12px !important;
-        font-weight: 600 !important;
-        transition: all 0.15s ease-out !important;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 12px 22px;
+        font-family: 'Exo 2', sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--mud-palette-primary);
+        background-color: var(--mud-palette-surface);
+        border: 2px solid var(--mud-palette-primary);
+        border-radius: 12px;
+        text-decoration: none;
+        overflow: hidden;
+        transition: all 0.15s ease-out;
         transform-style: preserve-3d;
-        /* Simula lo spessore del bottone */
         box-shadow: 0 4px 0 0 color-mix(in srgb, var(--mud-palette-primary) 70%, black);
         transform: translateY(-4px);
     }
 
-    .contact-button-3d:hover {
-        /* Solleva e ruota leggermente il bottone */
-        transform: translateY(-6px) rotateX(10deg) rotateY(-5deg);
-        box-shadow: 0 8px 0 0 color-mix(in srgb, var(--mud-palette-primary) 70%, black), 0 12px 20px rgba(0, 0, 0, 0.2);
+    .wavy-button-3d i {
+        font-size: 1.2rem;
     }
 
-    .contact-button-3d:active {
-        /* Simula la pressione completa */
+    .wavy-button-3d:hover {
+        background-color: var(--mud-palette-primary);
+        color: var(--mud-palette-background);
+        transform: translateY(-6px) rotateX(5deg) rotateY(-2deg);
+        box-shadow: 0 8px 0 0 color-mix(in srgb, var(--mud-palette-primary) 70%, black), 0 12px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .wavy-button-3d:active {
         transform: translateY(0);
         box-shadow: 0 0px 0 0 color-mix(in srgb, var(--mud-palette-primary) 70%, black);
+    }
+
+    .wavy-button-3d .wavy-text span {
+        position: relative;
+        display: inline-block;
+        animation: wave 1s infinite;
+        animation-play-state: paused;
+        animation-delay: calc(0.07s * var(--i));
+    }
+
+    .wavy-button-3d:hover .wavy-text span {
+        animation-play-state: running;
+    }
+
+    @@keyframes wave {
+
+        0%,
+        40%,
+        100% {
+            transform: translateY(0);
+        }
+
+        20% {
+            transform: translateY(-5px);
+        }
     }
 
     .pre-animate {
@@ -55,29 +99,68 @@
         semplicemente salutarmi, scegli il tuo canale preferito qui sotto.
     </MudText>
 
-    <MudStack Row="true" Justify="Justify.Center" Spacing="4" Wrap="Wrap.Wrap" Class="mt-8">
-        <MudButton Href="mailto:stefano.delsordo@gmail.com" Target="_blank" Variant="Variant.Filled"
-            Color="Color.Inherit" StartIcon="fas fa-envelope" Size="Size.Large" Class="contact-button-3d">
-            Inviami una Email
-        </MudButton>
-        <MudButton Href="https://www.linkedin.com/in/stefano-del-sordo-ab5a98254/" Target="_blank"
-            Variant="Variant.Filled" Color="Color.Inherit" StartIcon="fa-brands fa-linkedin" Size="Size.Large"
-            Class="contact-button-3d">
-            LinkedIn
-        </MudButton>
-        <MudButton Href="https://github.com/SteDelSordo" Target="_blank" Variant="Variant.Filled" Color="Color.Inherit"
-            StartIcon="fa-brands fa-github" Size="Size.Large" Class="contact-button-3d">
-            GitHub
-        </MudButton>
-        <MudButton Href="https://wa.me/393336994097" Target="_blank" Variant="Variant.Filled" Color="Color.Inherit"
-            StartIcon="fa-brands fa-whatsapp" Size="Size.Large" Class="contact-button-3d">
-            WhatsApp
-        </MudButton>
-        <MudButton Href="https://t.me/SteYoshizu" Target="_blank" Variant="Variant.Filled" Color="Color.Inherit"
-            StartIcon="fa-brands fa-telegram" Size="Size.Large" Class="contact-button-3d">
-            Telegram
-        </MudButton>
-    </MudStack>
+    <div class="wavy-button-container mt-8">
+        <a href="mailto:stefano.delsordo@gmail.com" target="_blank" class="wavy-button-3d">
+            <i class="fas fa-envelope"></i>
+            <span class="wavy-text">
+                <span style="--i:1">E</span>
+                <span style="--i:2">m</span>
+                <span style="--i:3">a</span>
+                <span style="--i:4">i</span>
+                <span style="--i:5">l</span>
+            </span>
+        </a>
+        <a href="https://www.linkedin.com/in/stefano-del-sordo-ab5a98254/" target="_blank" class="wavy-button-3d">
+            <i class="fa-brands fa-linkedin"></i>
+            <span class="wavy-text">
+                <span style="--i:1">L</span>
+                <span style="--i:2">i</span>
+                <span style="--i:3">n</span>
+                <span style="--i:4">k</span>
+                <span style="--i:5">e</span>
+                <span style="--i:6">d</span>
+                <span style="--i:7">I</span>
+                <span style="--i:8">n</span>
+            </span>
+        </a>
+        <a href="https://github.com/SteDelSordo" target="_blank" class="wavy-button-3d">
+            <i class="fa-brands fa-github"></i>
+            <span class="wavy-text">
+                <span style="--i:1">G</span>
+                <span style="--i:2">i</span>
+                <span style="--i:3">t</span>
+                <span style="--i:4">H</span>
+                <span style="--i:5">u</span>
+                <span style="--i:6">b</span>
+            </span>
+        </a>
+        <a href="https://wa.me/393336994097" target="_blank" class="wavy-button-3d">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="wavy-text">
+                <span style="--i:1">W</span>
+                <span style="--i:2">h</span>
+                <span style="--i:3">a</span>
+                <span style="--i:4">t</span>
+                <span style="--i:5">s</span>
+                <span style="--i:6">A</span>
+                <span style="--i:7">p</span>
+                <span style="--i:8">p</span>
+            </span>
+        </a>
+        <a href="https://t.me/SteYoshizu" target="_blank" class="wavy-button-3d">
+            <i class="fa-brands fa-telegram"></i>
+            <span class="wavy-text">
+                <span style="--i:1">T</span>
+                <span style="--i:2">e</span>
+                <span style="--i:3">l</span>
+                <span style="--i:4">e</span>
+                <span style="--i:5">g</span>
+                <span style="--i:6">r</span>
+                <span style="--i:7">a</span>
+                <span style="--i:8">m</span>
+            </span>
+        </a>
+    </div>
 </MudContainer>
 
 @code {

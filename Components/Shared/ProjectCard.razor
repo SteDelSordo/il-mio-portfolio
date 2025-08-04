@@ -1,17 +1,29 @@
-<MudCard Class="project-card">
+<MudCard Class="project-card" Style="height: 100%;">
     <MudCardMedia Image="@ImageUrl" Height="200" />
-    <MudCardContent>
+    <MudCardContent Style="flex-grow: 1;">
         <MudText Typo="Typo.h5" Color="Color.Primary">@Title</MudText>
-        <MudText Typo="Typo.body2">@Description</MudText>
+        <MudText Typo="Typo.body2" Class="my-2">@Description</MudText>
+
+        <!-- Tags tecnologici -->
+        <div class="d-flex flex-wrap gap-1 mt-3">
+            @foreach (var tag in Tags)
+            {
+                <MudChip T="string" Color="Color.Primary" Variant="Variant.Outlined" Size="Size.Small">@tag</MudChip>
+            }
+        </div>
     </MudCardContent>
     <MudCardActions>
-        <MudButton Variant="Variant.Text" Color="Color.Primary">Scopri di più</MudButton>
+        <MudButton Variant="Variant.Text" Color="Color.Primary" EndIcon="@Icons.Material.Filled.ArrowForward">
+            Dettagli
+        </MudButton>
     </MudCardActions>
 </MudCard>
 
 <style>
     .project-card {
         transition: all 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
     }
 
     .project-card:hover {
@@ -29,4 +41,7 @@
 
     [Parameter]
     public string ImageUrl { get; set; } = "https://placehold.co/600x400";
+
+    [Parameter]
+    public List<string> Tags { get; set; } = new List<string>();
 }
