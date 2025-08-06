@@ -1,6 +1,9 @@
 @page "/progetti/kubecolors"
 
-@using MudBlazor;
+@*
+  OBIETTIVO: Questa è la pagina di dettaglio (Case Study) per il progetto KubeColors.
+  URL: /progetti/kubecolors
+*@
 
 <style>
     /* Stessa animazione delle altre pagine per coerenza */
@@ -142,20 +145,33 @@
 
     <MudDivider DividerType="DividerType.Middle" Class="section-divider" />
 
-    <!-- ==================== 5. GALLERIA DEL PRODOTTO ==================== -->
+    <!-- ==================== 5. GALLERIA DEL PRODOTTO (RIVISTA) ==================== -->
     <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true" Class="mb-6">Galleria</MudText>
-    <MudGrid Spacing="2">
+    <MudGrid Spacing="4" Justify="Justify.Center">
         <MudItem xs="12" sm="6" md="4">
-            <MudImage Src="images/kubecolors-mostra.png" Alt="Schermata di generazione"
-                Elevation="4" Class="rounded-lg" />
+            <MudCard Elevation="4">
+                <MudCardMedia Image="images/kubecolors-gallery-1.png" Height="250" />
+                <MudCardContent>
+                    <MudText Typo="Typo.body2">Il momento della creazione: un prompt evocativo dà il via alla magia.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
         </MudItem>
         <MudItem xs="12" sm="6" md="4">
-            <MudImage Src="images/kubecolors-copia.png"
-                Alt="Visualizzazione palette" Elevation="4" Class="rounded-lg" />
+            <MudCard Elevation="4">
+                <MudCardMedia Image="images/kubecolors-gallery-2.png" Height="250" />
+                <MudCardContent>
+                    <MudText Typo="Typo.body2">Il risultato: una palette funzionale e a tema, pronta all'uso.</MudText>
+                </MudCardContent>
+            </MudCard>
         </MudItem>
         <MudItem xs="12" sm="6" md="4">
-            <MudImage Src="images/kubecolors-mobile.png"
-                Alt="Responsività su mobile" Elevation="4" Class="rounded-lg" />
+            <MudCard Elevation="4">
+                <MudCardMedia Image="images/kubecolors-gallery-3.png" Height="250" />
+                <MudCardContent>
+                    <MudText Typo="Typo.body2">Design responsivo: un'esperienza perfetta su ogni dispositivo.</MudText>
+                </MudCardContent>
+            </MudCard>
         </MudItem>
     </MudGrid>
 
@@ -168,8 +184,7 @@
         dall'ideazione alla messa online. Ha rafforzato le mie competenze in architetture cloud, sviluppo full-stack e
         integrazione AI.
         La visione futura è chiara: trasformare KubeColors in un vero e proprio micro-SAAS, offrendo accesso API a
-        pagamento per sviluppatori e aziende. Questo dimostra una mentalità non solo da sviluppatore, ma da
-        imprenditore.
+        pagamento per sviluppatori e aziende.
     </MudText>
 
 </MudContainer>
