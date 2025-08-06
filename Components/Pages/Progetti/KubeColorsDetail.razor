@@ -145,12 +145,12 @@
 
     <MudDivider DividerType="DividerType.Middle" Class="section-divider" />
 
-    <!-- ==================== 5. GALLERIA DEL PRODOTTO (RIVISTA) ==================== -->
+    <!-- ==================== 5. GALLERIA DEL PRODOTTO (RIVISTA E CORRETTA V3) ==================== -->
     <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true" Class="mb-6">Galleria</MudText>
     <MudGrid Spacing="4" Justify="Justify.Center">
         <MudItem xs="12" sm="6" md="4">
             <MudCard Elevation="4">
-                <MudCardMedia Image="images/kubecolors-gallery-1.png" Height="250" />
+                <MudCardMedia Image="images/kubecolors-gallery-1.png" Height="250" Style="object-fit: cover;" />
                 <MudCardContent>
                     <MudText Typo="Typo.body2">Il momento della creazione: un prompt evocativo dà il via alla magia.
                     </MudText>
@@ -159,7 +159,7 @@
         </MudItem>
         <MudItem xs="12" sm="6" md="4">
             <MudCard Elevation="4">
-                <MudCardMedia Image="images/kubecolors-gallery-2.png" Height="250" />
+                <MudCardMedia Image="images/kubecolors-gallery-2.png" Height="250" Style="object-fit: cover;" />
                 <MudCardContent>
                     <MudText Typo="Typo.body2">Il risultato: una palette funzionale e a tema, pronta all'uso.</MudText>
                 </MudCardContent>
@@ -167,7 +167,9 @@
         </MudItem>
         <MudItem xs="12" sm="6" md="4">
             <MudCard Elevation="4">
-                <MudCardMedia Image="images/kubecolors-gallery-3.png" Height="250" />
+                <!-- MODIFICA: Stile specifico per l'immagine mobile per evitare tagli e mostrare l'intera UI. -->
+                <MudCardMedia Image="images/kubecolors-gallery-3.png" Height="250"
+                    Style="object-fit: contain; background-color: #2e3438;" />
                 <MudCardContent>
                     <MudText Typo="Typo.body2">Design responsivo: un'esperienza perfetta su ogni dispositivo.</MudText>
                 </MudCardContent>
@@ -184,7 +186,8 @@
         dall'ideazione alla messa online. Ha rafforzato le mie competenze in architetture cloud, sviluppo full-stack e
         integrazione AI.
         La visione futura è chiara: trasformare KubeColors in un vero e proprio micro-SAAS, offrendo accesso API a
-        pagamento per sviluppatori e aziende.
+        pagamento per sviluppatori e aziende. Questo dimostra una mentalità non solo da sviluppatore, ma da
+        imprenditore.
     </MudText>
 
 </MudContainer>
