@@ -1,0 +1,187 @@
+@using MudBlazor;
+
+<style>
+    /* Stessa animazione delle altre pagine per coerenza */
+    .pre-animate {
+        opacity: 0;
+    }
+
+    .animate-fade-in-up {
+        animation: fade-in-up-anim 0.8s ease-out forwards;
+    }
+
+    @@keyframes fade-in-up-anim {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 170, 140, 0.25);
+    }
+
+    .section-divider {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+</style>
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="@_containerClass">
+
+    <!-- ==================== 1. HEADER D'IMPATTO ==================== -->
+    <MudText Typo="Typo.h3" GutterBottom="true" Align="Align.Center" Class="mb-4">
+        KubeColors: Case Study di un Prodotto SAAS
+    </MudText>
+
+    <MudImage Src="images/kubecolors-hero.png" Alt="KubeColors Dashboard" Class="hero-image mb-6" />
+
+    <MudStack Row="true" Justify="Justify.Center" Spacing="2" Class="mb-8">
+        <MudButton Href="https://www.kubecolors.com" Target="_blank" Variant="Variant.Filled" Color="Color.Primary"
+            Size="Size.Large" EndIcon="@Icons.Material.Filled.Launch">
+            Prova KubeColors Live
+        </MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Inherit" Size="Size.Large">
+            Codice Sorgente su Richiesta
+        </MudButton>
+    </MudStack>
+
+    <MudDivider DividerType="DividerType.Middle" Class="section-divider" />
+
+    <!-- ==================== 2. PROBLEMA E SOLUZIONE ==================== -->
+    <MudGrid Spacing="4" Justify="Justify.Center">
+        <MudItem xs="12" md="5">
+            <MudText Typo="Typo.h5" GutterBottom="true" Color="Color.Primary">Il Problema</MudText>
+            <MudText Typo="Typo.body1">
+                Per sviluppatori, designer e creativi, il processo di ricerca di una palette di colori armonica e
+                originale è spesso un ostacolo che frena la creatività e rallenta lo sviluppo. Gli strumenti esistenti
+                sono a volte limitati, poco intuitivi o non riescono a catturare l'essenza di un'idea complessa.
+            </MudText>
+        </MudItem>
+        <MudItem xs="12" md="5">
+            <MudText Typo="Typo.h5" GutterBottom="true" Color="Color.Primary">La Mia Soluzione</MudText>
+            <MudText Typo="Typo.body1">
+                KubeColors nasce come risposta diretta a questa sfida: un'applicazione web veloce, intelligente e
+                focalizzata sull'utente, che trasforma un semplice input testuale in una palette di colori pronta
+                all'uso. L'obiettivo era creare un partner creativo, non solo un tool.
+            </MudText>
+        </MudItem>
+    </MudGrid>
+
+    <MudDivider DividerType="DividerType.Middle" Class="section-divider" />
+
+    <!-- ==================== 3. ARCHITETTURA AI "CERBERO" ==================== -->
+    <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true">Architettura AI "Cerbero": Il Cuore del Progetto
+    </MudText>
+    <MudText Align="Align.Center" Class="mb-6" Style="max-width: 800px; margin-left: auto; margin-right: auto;">
+        Per garantire risultati superiori, ho progettato e implementato "Cerbero", un'architettura AI ibrida che
+        orchestra tre modelli linguistici, ognuno con un ruolo specifico, superando i limiti di un approccio a modello
+        singolo.
+    </MudText>
+    <MudGrid Spacing="4">
+        <MudItem xs="12" md="4">
+            <MudPaper Class="pa-4" Elevation="3" Style="height: 100%;">
+                <MudText Typo="Typo.h6">1. Mistral</MudText>
+                <MudText>Fornisce la base creativa e veloce. Ideale per l'ideazione rapida e per generare un'ampia gamma
+                    di opzioni iniziali.</MudText>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" md="4">
+            <MudPaper Class="pa-4" Elevation="3" Style="height: 100%;">
+                <MudText Typo="Typo.h6">2. Groq</MudText>
+                <MudText>Specializzato nell'elaborazione a bassissima latenza, garantisce risposte quasi istantanee,
+                    migliorando drasticamente l'esperienza utente.</MudText>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" md="4">
+            <MudPaper Class="pa-4" Elevation="3" Style="height: 100%;">
+                <MudText Typo="Typo.h6">3. Gemini (Google)</MudText>
+                <MudText>Apporta una profonda comprensione del contesto e una generazione di colori sfumata e complessa,
+                    per risultati di altissima qualità.</MudText>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
+    <MudDivider DividerType="DividerType.Middle" Class="section-divider" />
+
+    <!-- ==================== 4. STACK TECNOLOGICO ==================== -->
+    <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true" Class="mb-6">Stack Tecnologico e Scelte
+        Architettoniche</MudText>
+    <MudGrid Spacing="4">
+        <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.h6">Blazor WebAssembly</MudText>
+            <MudText>Scelto per la sua capacità di creare interfacce web complesse e reattive usando C#, permettendo
+                un'architettura full-stack interamente in .NET e garantendo performance elevate lato client.</MudText>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.h6">.NET 8 & C#</MudText>
+            <MudText>L'ultima versione del framework .NET offre performance eccezionali, sicurezza e un ecosistema
+                maturo, ideale per costruire applicazioni robuste e manutenibili nel tempo.</MudText>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.h6">Azure Functions</MudText>
+            <MudText>Ideali per un backend serverless che scala automaticamente con la domanda. Questo approccio
+                minimizza i costi operativi e astrae la gestione dell'infrastruttura.</MudText>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.h6">MudBlazor</MudText>
+            <MudText>Una libreria di componenti UI che ha permesso di accelerare lo sviluppo del frontend, garantendo un
+                design pulito, moderno e conforme agli standard Material Design.</MudText>
+        </MudItem>
+    </MudGrid>
+
+    <MudDivider DividerType="DividerType.Middle" Class="section-divider" />
+
+    <!-- ==================== 5. GALLERIA DEL PRODOTTO ==================== -->
+    <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true" Class="mb-6">Galleria</MudText>
+    <MudGrid Spacing="2">
+        <MudItem xs="12" sm="6" md="4">
+            <MudImage Src="images/kubecolors-mostra.png" Alt="Schermata di generazione"
+                Elevation="4" Class="rounded-lg" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudImage Src="images/kubecolors-copia.png"
+                Alt="Visualizzazione palette" Elevation="4" Class="rounded-lg" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudImage Src="images/kubecolors-mobile.png"
+                Alt="Responsività su mobile" Elevation="4" Class="rounded-lg" />
+        </MudItem>
+    </MudGrid>
+
+    <MudDivider DividerType="DividerType.Middle" Class="section-divider" />
+
+    <!-- ==================== 6. CONCLUSIONI E VISIONE FUTURA ==================== -->
+    <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true">Conclusioni e Visione Futura</MudText>
+    <MudText Align="Align.Center" Style="max-width: 800px; margin-left: auto; margin-right: auto;">
+        KubeColors è più di un progetto tecnico; è la dimostrazione della mia capacità di gestire un prodotto digitale
+        dall'ideazione alla messa online. Ha rafforzato le mie competenze in architetture cloud, sviluppo full-stack e
+        integrazione AI.
+        La visione futura è chiara: trasformare KubeColors in un vero e proprio micro-SAAS, offrendo accesso API a
+        pagamento per sviluppatori e aziende. Questo dimostra una mentalità non solo da sviluppatore, ma da
+        imprenditore.
+    </MudText>
+
+</MudContainer>
+
+@code {
+    private string _containerClass = "mt-16 pre-animate";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(50);
+            _containerClass = "mt-16 animate-fade-in-up";
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+}

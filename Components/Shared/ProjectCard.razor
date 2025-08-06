@@ -1,3 +1,5 @@
+@* FILE: /Shared/ProjectCard.razor *@
+
 <MudCard Class="project-card" Style="height: 100%;">
     <MudCardMedia Image="@ImageUrl" Height="200" />
     <MudCardContent Style="flex-grow: 1;">
@@ -13,8 +15,10 @@
         </div>
     </MudCardContent>
     <MudCardActions>
-        <MudButton Variant="Variant.Text" Color="Color.Primary" EndIcon="@Icons.Material.Filled.ArrowForward">
-            Dettagli
+        <!-- MODIFICA: Il bottone ora è un link che porta alla pagina di dettaglio -->
+        <MudButton Href="@DetailUrl" Variant="Variant.Text" Color="Color.Primary"
+            EndIcon="@Icons.Material.Filled.ArrowForward">
+            Scopri la Case Study
         </MudButton>
     </MudCardActions>
 </MudCard>
@@ -44,4 +48,8 @@
 
     [Parameter]
     public List<string> Tags { get; set; } = new List<string>();
+
+    // NUOVO: Parametro per l'URL della pagina di dettaglio
+    [Parameter]
+    public string DetailUrl { get; set; } = "/";
 }

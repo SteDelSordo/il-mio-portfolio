@@ -4,14 +4,17 @@
     .pre-animate {
         opacity: 0;
     }
+
     .animate-fade-in-up {
         animation: fade-in-up-anim 0.7s ease-out forwards;
     }
+
     @@keyframes fade-in-up-anim {
         from {
             opacity: 0;
             transform: translateY(20px);
         }
+
         to {
             opacity: 1;
             transform: translateY(0);
@@ -21,26 +24,30 @@
 
 <MudContainer MaxWidth="MaxWidth.False" Class="@_containerClass">
     <MudText Typo="Typo.h3" GutterBottom="true">Progetti</MudText>
-    <MudText Class="mb-8">Una selezione di progetti concreti che dimostrano competenze specifiche in .NET, Blazor e AI.</MudText>
-    
+    <MudText Class="mb-8">Una selezione di progetti concreti che dimostrano competenze specifiche in .NET, Blazor e AI.
+    </MudText>
+
     <MudGrid Spacing="4">
+        <!-- ==================== KUBECOLORS CARD ==================== -->
         <MudItem xs="12" sm="6" md="4">
-            <ProjectCard Title="Generatore Palette AI" 
-                         Description="Un micro-servizio dove un utente descrive uno scenario e un'Azure Function, tramite AI, genera una palette colori. Dimostra l'integrazione AI in modo pratico." 
-                         ImageUrl="https://placehold.co/600x400/1E1E1E/26A69A?text=AI+Colors"
-                         Tags="@(new List<string> { "AI", "Azure", "Blazor" })" />
+            <ProjectCard Title="KubeColors"
+                Description="Un'applicazione SAAS che genera palette di colori uniche tramite un'architettura AI custom. Sviluppato in Blazor e .NET 8, è un esempio di prodotto digitale completo, dall'idea al deployment su Azure."
+                ImageUrl="images/kubecolorsCard.png" Tags="@(new List<string> { "AI", "Blazor", "C#", "Azure" })"
+                DetailUrl="/progetti/kubecolors" />
+        </MudItem>
+        <!-- ========================================================= -->
+
+        <MudItem xs="12" sm="6" md="4">
+            <ProjectCard Title="Motore Blog Statico"
+                Description="Un blog minimale e performante che legge file Markdown da una cartella e li renderizza in HTML. Nessun database, solo puro .NET e Blazor."
+                ImageUrl="https://placehold.co/600x400/1E1E1E/26A69A?text=Static+Blog"
+                Tags="@(new List<string> { ".NET", "Blazor", "Markdown" })" DetailUrl="/progetti/static-blog" />
         </MudItem>
         <MudItem xs="12" sm="6" md="4">
-            <ProjectCard Title="Motore Blog Statico" 
-                         Description="Un blog minimale e performante che legge file Markdown da una cartella e li renderizza in HTML. Nessun database, solo puro .NET e Blazor." 
-                         ImageUrl="https://placehold.co/600x400/1E1E1E/26A69A?text=Static+Blog"
-                         Tags="@(new List<string> { ".NET", "Blazor", "Markdown" })" />
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <ProjectCard Title="Dashboard API Pubblica" 
-                         Description="Un'interfaccia Blazor che consuma un'API pubblica (es. dati crypto o film) e visualizza i dati in modo accattivante con grafici e filtri." 
-                         ImageUrl="https://placehold.co/600x400/1E1E1E/26A69A?text=API+Dashboard"
-                         Tags="@(new List<string> { "API", "Blazor", "Data Viz" })" />
+            <ProjectCard Title="Dashboard API Pubblica"
+                Description="Un'interfaccia Blazor che consuma un'API pubblica (es. dati crypto o film) e visualizza i dati in modo accattivante con grafici e filtri."
+                ImageUrl="https://placehold.co/600x400/1E1E1E/26A69A?text=API+Dashboard"
+                Tags="@(new List<string> { "API", "Blazor", "Data Viz" })" DetailUrl="/progetti/api-dashboard" />
         </MudItem>
     </MudGrid>
 </MudContainer>
